@@ -1,8 +1,20 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import { RootStackParamList } from '../types/RootStackPrams';
+
 
 //TODO: arrumar nome da imagem
 
+type homePageProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
 export default function Home() {
+  const navigation = useNavigation<homePageProp>();
+
+  function iniciar(): void{
+      navigation.navigate('Formulario');
+  }
+
   return (
     <>
       <View style={styles.container}>
@@ -10,7 +22,12 @@ export default function Home() {
 
         <Image style={styles.icone} source={require("../../assets/images/icone-diferente.png")} />
 
-        <Text style={styles.iniciar}>Clique na tela para iniciar</Text>
+        <Text style={styles.iniciar}>
+            <TouchableOpacity onPress={iniciar}>
+                <Text>Clique na tela para iniciar</Text>
+            </TouchableOpacity>
+        </Text>
+
       </View>
     </>
   );
