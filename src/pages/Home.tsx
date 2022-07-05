@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/RootStackPrams';
+
+import globalStyles from '../styles/global';
 
 
 //TODO: arrumar nome da imagem
@@ -17,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={globalStyles.container}>
         <Text style={styles.bemVindo}>Bem Vindo!</Text>
 
         <Image style={styles.icone} source={require("../../assets/images/icone-diferente.png")} />
@@ -34,12 +36,6 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#59A5A8',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   bemVindo: {
     color: '#fff',
     fontWeight: 'bold',
