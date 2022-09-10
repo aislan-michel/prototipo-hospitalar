@@ -6,7 +6,7 @@ import {useState} from 'react';
 import moment from 'moment';
 
 import globalStyles from '../styles/global';
-import { Button } from '../components/Button'
+import { RoundedButton } from '../components/RoundedButton'
 
 type formularioProp = StackNavigationProp<RootStackParamList, 'Formulario'>;
 
@@ -27,7 +27,7 @@ export default function Formulario() {
   return (
     <>
         <View style={globalStyles.container}>
-            <Text style={styles.titulo}>Por favor, entre com os dados abaixo:</Text>
+            <Text style={globalStyles.titulo}>Por favor, entre com os dados abaixo:</Text>
 
             <TextInput style={styles.input} placeholder='Nome do paciente' />
 
@@ -40,22 +40,13 @@ export default function Formulario() {
 
             <TextInput keyboardType='phone-pad' style={styles.input} placeholder='Contato do acompanhante' />
 
-            <Button title='ENTRAR' onPress={conectar} />
+            <RoundedButton title='ENTRAR' onPress={conectar} />
         </View>
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  titulo: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 40,
-    position: 'absolute',
-    top: '5%',
-    textAlign: 'center',
-    padding: '2%'
-  },
   input: {
     backgroundColor: '#fff',
     padding: 20,

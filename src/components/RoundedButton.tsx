@@ -1,7 +1,7 @@
 import {StyleSheet, Text, TouchableOpacity} from "react-native";
-import {IButtonProps} from "../interfaces/IButtonProps"
+import {IRoundedButtonProps} from "../interfaces/IRoundedButtonProps"
 
-export function Button({ title, ...rest }: IButtonProps) {
+export function RoundedButton({ title, ...rest }: IRoundedButtonProps) {
     return (
         <TouchableOpacity style={styles.button} activeOpacity={0.6} {...rest}>
             <Text style={styles.text}>
