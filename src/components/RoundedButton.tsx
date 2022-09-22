@@ -1,25 +1,36 @@
-import {StyleSheet, Text, TouchableOpacity} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {IRoundedButtonProps} from "../interfaces/IRoundedButtonProps"
 
 export function RoundedButton({ title, ...rest }: IRoundedButtonProps) {
     return (
-        <TouchableOpacity style={styles.button} activeOpacity={0.6} {...rest}>
-            <Text style={styles.text}>
-                {title}
-            </Text>
-        </TouchableOpacity>
+        <>
+          <View style={styles.container}>
+            <TouchableOpacity style={styles.button} activeOpacity={0.6} {...rest}>
+                <Text style={styles.text}>
+                    {title}
+                </Text>
+            </TouchableOpacity>
+          </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   button: {
-    position: 'absolute',
-    top: '80%'
+    flex: 1,
+    width: 100,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
+    backgroundColor: '#396B6D',
   },
   text: {
-    backgroundColor: '#396B6D',
-    padding: 15,
-    borderRadius: 50,
     color: '#fff'        
   }
 });
