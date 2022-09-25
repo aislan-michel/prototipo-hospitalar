@@ -5,9 +5,6 @@ import { RootStackParamList } from '../types/RootStackPrams';
 
 import globalStyles from '../styles/global';
 
-
-//TODO: arrumar nome da imagem
-
 type homePageProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 export default function Home() {

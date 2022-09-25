@@ -34,8 +34,10 @@ export default function Formulario() {
     <>
       <View style={styles.container}>
         <SafeAreaView style={{flex: 1}}>
-          <Text style={styles.titulo}>Por favor, entre com os dados abaixo:</Text>
-
+          <View style={{flexDirection:'row'}}> 
+              <Text style={styles.titulo}>Conecte-se com a cama:</Text>
+          </View>
+          
           <TextInput style={styles.input} placeholder='Nome do paciente' />
 
           <TextInput keyboardType='numbers-and-punctuation' style={styles.input} 
@@ -65,19 +67,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  input: {
-    flex: 1,
-    backgroundColor: '#fff',
-    marginBottom: '5%',
-    textAlign: 'center'
-  },
   titulo: {
-    flex: 4,
+    flex: 2,
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 40,
-    top: '5%',
     textAlign: 'center',
-    padding: '2%',
+    margin: 15,
+    flexWrap: 'wrap'
   },
+  input: {
+    flex: 1,
+    backgroundColor: '#fff',
+    margin: 15,
+    textAlign: 'center'
+  }
 });
