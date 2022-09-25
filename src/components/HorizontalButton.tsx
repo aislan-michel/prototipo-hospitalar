@@ -1,21 +1,31 @@
-import {StyleSheet, Text, TouchableOpacity} from "react-native";
+import React from "react";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {IHorizontalButtonProps} from "../interfaces/IHorizontalButtonProps"
 
 export function HorizontalButton({ title, ...rest }: IHorizontalButtonProps) {
     return (
-        <TouchableOpacity style={styles.button} activeOpacity={0.6} {...rest}>
-            <Text style={styles.text}>
-                {title}
-            </Text>
-        </TouchableOpacity>
+        <>
+          <View style={styles.container}>
+            <TouchableOpacity style={styles.button} activeOpacity={0.6} {...rest}>
+              <Text style={styles.text}>
+                  {title}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   button: {
-    margin: "5%",
+    margin: 15,
     backgroundColor: '#fff',
-    padding: "5%"
+    padding: 10
   },
   text: {
     fontSize: 25
