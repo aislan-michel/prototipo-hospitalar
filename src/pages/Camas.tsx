@@ -16,23 +16,27 @@ export default function Camas() {
       navigation.navigate('Formulario');
     }
 
+    function funcionalidadesDaCama(){
+        navigation.navigate('FuncionalidadesDaCama');
+    }
+
     return(
         <>
             <View style={styles.container}>
                 <SafeAreaView style={{flex: 1}}>
                     <View style={{flexDirection:'row'}}> 
                         <Text style={styles.titulo}>Conecte-se com a cama:</Text>
-                    </View>
+                    </View>                    
 
-                    <HorizontalButton title='CAMA HOSPITALAR 01' />
+                    <HorizontalButton title='CAMA HOSPITALAR 01' onPress={() => funcionalidadesDaCama()} />
 
-                    <HorizontalButton title='CAMA HOSPITALAR 02' />
+                    <HorizontalButton title='CAMA HOSPITALAR 02' onPress={() => funcionalidadesDaCama()} />
 
-                    <HorizontalButton title='CAMA HOSPITALAR 03' />
+                    <HorizontalButton title='CAMA HOSPITALAR 03' onPress={() => funcionalidadesDaCama()} />
 
-                    <HorizontalButton title='CAMA HOSPITALAR 04' />
+                    <HorizontalButton title='CAMA HOSPITALAR 04' onPress={() => funcionalidadesDaCama()} />
 
-                    <HorizontalButton title='CAMA HOSPITALAR 05' />
+                    <HorizontalButton title='CAMA HOSPITALAR 05' onPress={() => funcionalidadesDaCama()} />
 
                     <RoundedButton title='VOLTAR' onPress={() => voltar()} />
                 </SafeAreaView>

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/RootStackPrams';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 import { RoundedButton } from '../components/RoundedButton'
@@ -20,8 +20,8 @@ export default function Formulario() {
     navigation.navigate('Camas');
   }
 
-  function calcularIdade(dataNascimento: string): void{
-    if(dataNascimento.length !== 10){
+  function calcularIdade(dataNascimento: string): void {
+    if (dataNascimento.length !== 10) {
       return;
     }
 
@@ -33,16 +33,16 @@ export default function Formulario() {
   return (
     <>
       <View style={styles.container}>
-        <SafeAreaView style={{flex: 1}}>
-          <View style={{flexDirection:'row'}}> 
-              <Text style={styles.titulo}>Conecte-se com a cama:</Text>
+        <SafeAreaView style={{ flex: 1 }}>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={styles.titulo}>Conecte-se com a cama:</Text>
           </View>
-          
+
           <TextInput style={styles.input} placeholder='Nome do paciente' />
 
-          <TextInput keyboardType='numbers-and-punctuation' style={styles.input} 
-            placeholder='Data de nascimento (dd/mm/aaaa)' 
-            onChangeText={value => calcularIdade(value)} 
+          <TextInput keyboardType='numbers-and-punctuation' style={styles.input}
+            placeholder='Data de nascimento (dd/mm/aaaa)'
+            onChangeText={value => calcularIdade(value)}
           />
 
           <TextInput style={styles.input} placeholder='Idade' editable={false} value={idade} />
