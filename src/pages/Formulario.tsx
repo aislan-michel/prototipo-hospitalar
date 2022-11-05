@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, TextInput, Platform } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/RootStackPrams';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 
 import { RoundedButton } from '../components/RoundedButton'
@@ -12,74 +12,79 @@ type formularioProp = StackNavigationProp<RootStackParamList, 'Formulario'>;
 moment().format();
 
 export default function Formulario() {
-  const [idade, setIdade] = useState('');
+    const [nomePaciente, setNomePaciente] = useState('');
+    const [idade, setIdade] = useState('');
 
-  const navigation = useNavigation<formularioProp>();
+    const navigation = useNavigation<formularioProp>();
 
-  function conectar(): void {
-    navigation.navigate('Camas');
-  }
+    function conectar(): void {
+        if (nomePaciente === null || nomePaciente === "") {
+            alert('nome do paciente é obrigatório');
+            return;
+        }
 
-  function calcularIdade(dataNascimento: string): void{
-    if(dataNascimento.length !== 10){
-      return;
+        navigation.navigate('Camas', { paciente: nomePaciente });
     }
 
-    const idade = moment(new Date()).diff(dataNascimento, 'years');
-    console.log(idade);
-    setIdade(idade.toString() ?? "");
-  }
+    function calcularIdade(dataNascimento: string): void {
+        if (dataNascimento.length !== 10) {
+            return;
+        }
 
-  return (
-    <>
-      <View style={styles.container}>
-        <SafeAreaView style={{flex: 1}}>
-          <View style={{flexDirection:'row'}}> 
-              <Text style={styles.titulo}>Conecte-se com a cama:</Text>
-          </View>
-          
-          <TextInput style={styles.input} placeholder='Nome do paciente' />
+        const idade = moment(new Date()).diff(dataNascimento, 'years');
+        console.log(idade);
+        setIdade(idade.toString() ?? "");
+    }
 
-          <TextInput keyboardType='numbers-and-punctuation' style={styles.input} 
-            placeholder='Data de nascimento (dd/mm/aaaa)' 
-            onChangeText={value => calcularIdade(value)} 
-          />
+    return (
+        <>
+            <View style={styles.container}>
+                <SafeAreaView style={styles.safeAreaView}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Text style={styles.titulo}>Conecte-se com a cama:</Text>
+                    </View>
 
-          <TextInput style={styles.input} placeholder='Idade' editable={false} value={idade} />
+                    <TextInput style={styles.input} placeholder='Nome do paciente' value={nomePaciente} onChangeText={value => setNomePaciente(value)} />
 
-          <TextInput style={styles.input} placeholder='Nome do acompanhante' />
+                    <TextInput keyboardType='numbers-and-punctuation' style={styles.input}
+                        placeholder='Data de nascimento (dd/mm/aaaa)'
+                        onChangeText={value => calcularIdade(value)}
+                    />
 
-          <TextInput keyboardType='phone-pad' style={styles.input} placeholder='Contato do acompanhante' />
+                    <TextInput style={styles.input} placeholder='Idade' editable={false} value={idade} />
 
-          <RoundedButton title='ENTRAR' onPress={conectar} />
-        </SafeAreaView>
-      </View>
-    </>
-  );
+                    <TextInput style={styles.input} placeholder='Nome do acompanhante' />
+
+                    <TextInput keyboardType='phone-pad' style={styles.input} placeholder='Contato do acompanhante' />
+
+                    <RoundedButton title='ENTRAR' onPress={conectar} />
+                </SafeAreaView>
+            </View>
+        </>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingVertical: Platform.OS === 'ios' ? 20 : 0,
-    backgroundColor: '#59A5A8',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  titulo: {
-    flex: 2,
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 40,
-    textAlign: 'center',
-    margin: 15,
-    flexWrap: 'wrap'
-  },
-  input: {
-    flex: 1,
-    backgroundColor: '#fff',
-    margin: 15,
-    textAlign: 'center'
-  }
+    container: {
+        flex: 1,
+        backgroundColor: '#59A5A8',
+    },
+    safeAreaView: {
+        flex: 1
+    },
+    titulo: {
+        flex: 1,
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 40,
+        textAlign: 'center',
+        margin: 15,
+        flexWrap: 'wrap'
+    },
+    input: {
+        flex: 0.8,
+        backgroundColor: '#fff',
+        margin: 10,
+        textAlign: 'center'
+    }
 });
