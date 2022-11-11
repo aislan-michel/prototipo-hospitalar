@@ -27,13 +27,15 @@ export default function Formulario() {
     }
 
     function calcularIdade(dataNascimento: string): void {
-        if (dataNascimento.length !== 10) {
-            return;
-        }
+        var from: any = dataNascimento.split("/");
+        var birthdateTimeStamp: any = new Date(from[2], from[1] - 1, from[0]);
+        var cur: any = new Date();
+        var diff = cur - birthdateTimeStamp;
+        // This is the difference in milliseconds
+        var currentAge = Math.floor(diff / 31557600000);
+        // Divide by 1000*60*60*24*365.25
+        setIdade(currentAge.toString());
 
-        const idade = moment(new Date()).diff(dataNascimento, 'years');
-        console.log(idade);
-        setIdade(idade.toString() ?? "");
     }
 
     return (
@@ -44,11 +46,18 @@ export default function Formulario() {
                         <Text style={styles.titulo}>Conecte-se com a cama:</Text>
                     </View>
 
-                    <TextInput style={styles.input} placeholder='Nome do paciente' value={nomePaciente} onChangeText={value => setNomePaciente(value)} />
+                    <TextInput style={styles.input} placeholder='Nome do paciente'
+                        value={nomePaciente} onChangeText={value => setNomePaciente(value)} />
 
                     <TextInput keyboardType='numbers-and-punctuation' style={styles.input}
                         placeholder='Data de nascimento (dd/mm/aaaa)'
-                        onChangeText={value => calcularIdade(value)}
+                        onChangeText={value => {
+                            if (value.length !== 10) {
+                                return;
+                            }
+
+                            calcularIdade(value);
+                        }}
                     />
 
                     <TextInput style={styles.input} placeholder='Idade' editable={false} value={idade} />

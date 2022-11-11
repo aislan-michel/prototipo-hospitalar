@@ -47,8 +47,8 @@ export default function ControleSinais() {
                         <View style={{ flexDirection: 'column' }}>
                             <View style={styles.iconeContainer}>
                                 <Image
-                                    source={require("../../assets/images/controle-da-respiracao.png")}
-                                    resizeMode="cover" style={{ width: 140, height: 110 }}
+                                    source={require("../../assets/images/pulmao.png")}
+                                    resizeMode="cover" style={styles.icone}
                                 />
                             </View>
                         </View>
@@ -68,7 +68,7 @@ export default function ControleSinais() {
                             <View style={styles.iconeContainer}>
                                 <Image
                                     source={require("../../assets/images/balanca.png")}
-                                    resizeMode="cover" style={{ width: 150, height: 150 }}
+                                    resizeMode="cover" style={styles.icone}
                                 />
                             </View>
                         </View>
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     icone: {
-
+        
 
     },
     iconeContainer: {
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         margin: '2%',
-        backgroundColor: 'white',
+        backgroundColor: '#48cfae',
         width: 140,
         height: 110
     },
